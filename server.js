@@ -21,6 +21,8 @@ dotenv.config();
 const mongoURI = process.env.MONGO_URL;
 connectDB(mongoURI); // Assuming connectDB is a function that takes a MongoDB URI and connects to the database
 
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
 //rest object
 const app = express();
 
