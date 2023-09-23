@@ -25,6 +25,11 @@ export const registerController = async (req, res) => {
     if (!answer) {
       return res.send({ message: "answer is required" });
     }
+     //password validate
+    const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    if (!passwordRegex.test(password)) {
+      return res.send({ message: "Password must be at least 8 characters, contain one capital letter, and one special character" });
+    }
     //check user
     const existinguser = await userModel.findOne({ email });
     //existing user
